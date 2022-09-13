@@ -1,9 +1,22 @@
 /* Imports */
 
 /* State */
+let gameState = 'guess'; //guess, results
+let guess = ''; //rock, paper, scissors
+let result = ''; //win, lose, draw
+
+let wins = 0;
+let losses = 0;
+let draw = 0;
+
 
 /* Actions */
-function loadPage() {}
+function loadPage() {
+    displayGuess();
+    displayResult();
+    displayScoreboard();
+}
+
 function compareInputs(pInput, cInput) {
     const currentMatch = `${pInput} vs ${cInput}`;
 
@@ -57,12 +70,6 @@ options.forEach((option) => {
         compareInputs(pInput, cInput);
     });
 }
-
-/* Component */
-// get DOM
-// display
-// event listeners
-
 
 
 /* Run page load code */
