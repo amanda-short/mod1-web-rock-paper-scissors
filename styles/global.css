@@ -10,7 +10,7 @@ body {
 
 .container {
     margin: 0 auto;
-    background-color: rgb(149, 189, 176);
+    background-color: rgb(59, 61, 60);
     border-radius: 20px;
     padding: 25px 50px;
     width: 80vw;
@@ -20,7 +20,7 @@ body {
     max-width: 800px;
     padding: 40px 0;
     margin: 0 auto;
-    background-color: rgb(169, 208, 209);
+    background-color: rgb(1, 90, 94);
     display: flex;
     flex-wrap: wrap;
     align-items: center;

@@ -1,76 +1,70 @@
 /* Imports */
+// import { getRandomItem, score } from '.utils.js';
 
-/* State */
 let gameState = 'guess'; //guess, results
 let guess = ''; //rock, paper, scissors
-let result = ''; //win, lose, draw
-
+let computer = ''; //rock, paper, scissors
+let result = '';
 let wins = 0;
 let losses = 0;
-let draw = 0;
+
+const options = ['Rock', 'Paper', 'Scissors']
+
+const Rock = document.getElementById('choose-rock');
+const Paper = document.getElementById('choose-paper');
+const Scissors = document.getElementById('choose-scissors');
+
+const rockButton = document.getElementById('rock-button');
+const paperButton = document.getElementById('paper-button');
+const scissorsButton = document.getElementById('scissors-button');
 
 
-/* Actions */
+//functions
 function loadPage() {
     displayGuess();
-    displayResult();
+    displayComputer();
     displayScoreboard();
 }
 
-function compareInputs(pInput, cInput) {
-    const currentMatch = `${pInput} vs ${cInput}`;
+//events
+rockButton.addEventListener('click', () => {
+    handleFight('rock');
+});
+paperButton.addEventListener('click', () => {
+    handleFight('paper');
+});
+rockButton.addEventListener('click', () => {
+    handleFight('scissors');
+});
 
-    // Tie check
-    if (pInput === cInput) {
-        alert(`${currentMatch} is a Tie`);
-        return;
+//actions
+function handleFight(pick) {
+    computer = getRandomItem(guess);
+    const result = score(pick, computer);
+
+    if (result === 1) {
+        wins++;
+        // wins textContent = WHAT NEXT?!?!
     }
-
-    // Rock
-    if (pInput === "Rock") {
-        if (cInput === "Scissors") {
-        alert(`${currentMatch} = You Win`);
-        } else {
-        alert(`${currentMatch} = Computer Wins`);
-        }
+    if (result === 0) {
+        draws++;
     }
-    // Paper
-    else if (pInput === "Paper") {
-        if (cInput === "Rock") {
-            alert(`${currentMatch} = You Win`);
-        } else {
-            alert(`${currentMatch} = Computer Wins`);
-        }
-        }
-      // Scissors
-        else if (pInput === "Scissors") {
-        if (cInput === "Paper") {
-            alert(`${currentMatch} = You Win`);
-        } else {
-            alert(`${currentMatch} = Computer Wins`);
-        }
+    if (result === -1) {
+        losses++;
     }
-    function updateMoves(pInput, cInput) {
-        document.getElementById("p-move").src = `./assets/${pInput}.svg`;
-        document.getElementById("c-move").src = `./assets/${cInput}.svg`;
-    }    
-    
-
-
-/* Components */
-const options = document.querySelectorAll(".options");
-
-options.forEach((option) => {
-    option.addEventListener("click", function () {
-        const pInput = this.value;
-
-        const cOptions = ["Rock", "Paper", "Scissors"];
-        const cInput = cOptions[Math.floor(Math.random() * 3)];
-        updateMoves(pInput, cInput)
-        compareInputs(pInput, cInput);
-    });
+    total++;
+    displayScoreboard();
 }
+
+function playAgain() {
+    gameState;
+    loadPage();
+}
+
+playAgainButton.addEventListener('click', () => {
+    playAgain();
+});
 
 
 /* Run page load code */
-loadPage()
+loadPage();
