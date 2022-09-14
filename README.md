@@ -1,1 +1,1 @@
-![](rpswireframe.png)
+![](./assets/rpswireframe.png)
